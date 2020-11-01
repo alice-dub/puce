@@ -4,9 +4,9 @@
     "slug": "puce",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/heater.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/heater.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,13 +22,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/heater.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "fr.succo.puce"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/heater.png"
     }
   }
 }
