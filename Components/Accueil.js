@@ -1,9 +1,28 @@
 // Components/Search.js
 import React from 'react'
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { Alert, View, Text, StyleSheet, TextInput } from 'react-native'
+import messaging from '@react-native-firebase/messaging';
 
 class Accueil extends React.Component {
+
+  state = { token : "" }
+
+  componentDidMount() {
+    // Get the device token
+    messaging()
+      .getToken()
+      .then(token => {
+        return this.setState(pState => (
+          { token: token }
+        ))
+      });
+    return messaging().onTokenRefresh(token => {
+        return  Alert.alert(token);
+    });
+  }
+
     render() {
+        const token = this.state.token
         return (
             <View style={{marginTop: 50, flex: 1, flexDirection: 'column', flexWrap: 'wrap', alignItems: "center"}}>
             <Text style={[styles.titre]}> Bienvenue dans PUCE </Text>
@@ -12,8 +31,8 @@ class Accueil extends React.Component {
 
             <Text style={[styles.texte]}> Quand une ou des TACs Fioul sont allumées 🏭 , le bilan carbone marginal de la conso explose 💥 ! (800g/kWh) </Text> 
             <Text style={[styles.texte]}> Ça pourrait valoir le coup d'éteindre ton chauffage pour quelques instants non ? </Text>
+            <Text style={[styles.texte]}> { token } </Text>
           </View>
- 
         )
     }
 }
@@ -45,4 +64,4 @@ const styles = StyleSheet.create({
     }
   })
 
-  export default Accueil
+export default Accueil
