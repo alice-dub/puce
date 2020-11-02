@@ -16,6 +16,8 @@ class Accueil extends React.Component {
           { token: token }
         ))
       });
+    messaging().subscribeToTopic('tac').then(() => console.log('Subscribed to topic!'));
+
     return messaging().onTokenRefresh(token => {
         return  Alert.alert(token);
     });
